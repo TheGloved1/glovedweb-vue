@@ -376,8 +376,10 @@ nav
             margin: 0
             justify-content: center
             transform: scale(0.8)
+            opacity: 0.5
             &:nth-child(2)
                 transform: scale(1.1)
+                opacity: 1
             &:nth-child(-n+3)
                 flex: 0
                 display: flex
