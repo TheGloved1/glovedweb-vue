@@ -10,8 +10,8 @@
         <section class="hidden" id="About">
             <h2>About Me</h2>
             <p>I wear gloves all the time. (Don't Ask Why)</p>
-            <p>I like to code.</p>
             <p>I play video games.</p>
+            <p>I love to code.</p>
             <p>Owner of the <a class="fancy-link" href="#discord" target="_blank" rel="noopener" style="color: rgba(141, 139, 139, 0.541)">Gloved Cult</a>.</p>
         </section>
         <section id="Discord" class="hidden">
