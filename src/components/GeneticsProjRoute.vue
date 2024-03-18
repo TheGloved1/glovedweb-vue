@@ -45,8 +45,18 @@
             </ul>
         </section>
 
-        <section class="hidden" id="References">
+        <section class="hidden" id="Video">
+            <h2>Video</h2>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/fXazHRK60rY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"> </iframe>
+            </div>
+        </section>
 
+        <section class="hidden" id="References">
+            <h2>Refrences</h2>
+            <ul>
+                <li><a>https://www.mayoclinic.org/diseases-conditions/hemochromatosis/symptoms-causes/syc-20351443</a></li>
+            </ul>
         </section>
         <NavComponent />
     </div>
@@ -69,6 +79,15 @@ export default {
 
 <style lang="sass">
 
+section
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: center
+    min-height: 35vh
+    box-sizing: border-box
+    text-align: center
+
 .flexbox
     display: flex
     width: 75vw
@@ -81,6 +100,7 @@ export default {
     display: none
 
 nav
+    display: none
     top: 0
     bottom: auto
 </style>

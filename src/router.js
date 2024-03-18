@@ -2,22 +2,15 @@
 
 import { createRouter, createWebHistory } from "vue-router";
 import HomeRoute from "./components/HomeRoute.vue";
-import ProjRoute from "./components/ProjRoute.vue";
 import GeneticsProjRoute from "./components/GeneticsProjRoute.vue";
 
 const routes = [
-    { path: "/", redirect: "/Home" },
+    { path: "/", redirect: "/Genetics" },
 
     { path: "/Home", component: HomeRoute },
     {
-        path: "/Projects",
-        component: ProjRoute,
-        children: [
-            {
-                path: "Genetics",
-                component: GeneticsProjRoute,
-            },
-        ],
+        path: "/Genetics",
+        component: GeneticsProjRoute,
     },
 ];
 
