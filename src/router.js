@@ -5,7 +5,7 @@ import HomeRoute from "./components/HomeRoute.vue";
 import GeneticsProjRoute from "./components/GeneticsProjRoute.vue";
 
 const routes = [
-    { path: "/", redirect: "/Genetics" },
+    { path: "/", redirect: "/Home" },
 
     { path: "/Home", component: HomeRoute },
     {

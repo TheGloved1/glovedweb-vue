@@ -2,7 +2,7 @@
 
 <template>
     <div>
-        <div class="pageNav">
+        <!-- <div class="pageNav">
             <ul>
                 <li>
                     <router-link to="/Home">Home</router-link>
@@ -11,7 +11,7 @@
                     <router-link to="/Projects">Projects</router-link>
                 </li>
             </ul>
-        </div>
+        </div> -->
         <router-view></router-view>
     </div>
 </template>
