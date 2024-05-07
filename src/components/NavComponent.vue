@@ -2,23 +2,17 @@
 
 <template>
     <div>
-        <nav>
-            <button @click="cycleBackward">❮</button>
+        <nav class="HomeNav">
+            <button class="homeButton previous-section-button" @click="cycleBackward">❮</button>
             <transition-group name="list" tag="ul">
-                <li
-                    v-for="(item, index) in items"
-                    :key="item"
-                    @click="
-                        (event) => {
-                            event.preventDefault();
-                        }
-                    ">
-                    <a :class="{ 'item-big': index === 2, 'item-small': index !== 2, [`item-${index}`]: true, [direction]: true, itemshow: index < 3, itemhide: index >= 3 }" :href="`#${item}`">
+                <li v-for="(item, index) in items" :key="item">
+                    <a :class="{ 'item-big': index === this.currentSectionIndex, [`item-${index}`]: true, [direction]: true }"
+                        :href="`#${item}`" @click="setSectionIndex(index)">
                         {{ item }}
                     </a>
                 </li>
             </transition-group>
-            <button @click="cycleForward">❯</button>
+            <button class="homeButton next-section-button" @click="cycleForward">❯</button>
         </nav>
     </div>
 </template>
@@ -32,15 +26,12 @@ export default {
             sectionObserver: null,
             nextSection: null,
             prevSection: null,
+            sections: null,
             items: [],
+            currentSectionIndex: 0,
             startIndex: 0,
             direction: "",
         };
-    },
-    computed: {
-        visibleItems() {
-            return this.items.slice(0, 3);
-        },
     },
     mounted() {
         this.getAllSections();
@@ -76,14 +67,19 @@ export default {
         }
     },
     methods: {
+        setSectionIndex(index) {
+            console.log(`Setting section index to ${index}!`);
+            this.currentSectionIndex = index;
+            console.log(`Current section index is now ${this.currentSectionIndex}!`);
+            this.scrollTo(this.currentSectionIndex);
+        },
         getAllSections() {
-            this.items = Array.from(document.querySelectorAll("section:not(.hide)")).map((section) => section.id);
-            this.cycleBackward();
+            this.items = Array.from(document.querySelectorAll("section")).map((section) => section.id);
         },
         onScroll() {
-            const currentSectionIndex = this.items.findIndex((item) => document.getElementById(item).getBoundingClientRect().top >= 0);
-            while (this.items[1] !== this.items[currentSectionIndex]) {
-                if (currentSectionIndex > 1) {
+            this.currentSectionIndex = this.items.findIndex((item) => document.getElementById(item).getBoundingClientRect().top >= 0);
+            while (this.items[0] !== this.items[this.currentSectionIndex]) {
+                if (this.currentSectionIndex > 1) {
                     this.cycleForward();
                 } else {
                     this.cycleBackward();
@@ -102,30 +98,39 @@ export default {
                 });
             });
         },
-        cycleForward() {
-            const firstItem = this.items.shift();
-            this.items.push(firstItem);
-            this.$nextTick(() => {
-                this.direction = "move-right";
-                const element = document.getElementById(this.items[1]);
-                if (element) {
-                    element.scrollIntoView({ behavior: "smooth" });
-                }
-            });
+        async cycleForward() {
+            if (this.currentSectionIndex < this.items.length - 1) {
+                this.currentSectionIndex++;
+            } else {
+                this.currentSectionIndex = 0;
+            }
+            console.log(`Scrolling to index ${this.currentSectionIndex}!`);
+            this.scrollTo(this.currentSectionIndex);
         },
-        cycleBackward() {
-            const lastItem = this.items.pop();
-            this.items.unshift(lastItem);
-            this.$nextTick(() => {
-                this.direction = "move-left";
-                const element = document.getElementById(this.items[1]);
-                if (element) {
-                    element.scrollIntoView({ behavior: "smooth" });
-                }
-            });
+        async cycleBackward() {
+            if (this.currentSectionIndex > 0) {
+                this.currentSectionIndex--;
+            } else {
+                this.currentSectionIndex = this.items.length - 1;
+            }
+            console.log(`Scrolling to index ${this.currentSectionIndex}!`);
+            this.scrollTo(this.currentSectionIndex);
+        },
+        async scrollTo(index) {
+            const element = document.getElementById(this.items[index]);
+            if (element) {
+                element.scrollIntoView({ behavior: "smooth" });
+            }
+
         },
     },
     name: "NavComponent",
+    components: {},
 };
 </script>
-<style scoped lang="sass"></style>
+<style>
+.item-big {
+    transform: scale(1.2);
+    margin: 0 1rem;
+}
+</style>

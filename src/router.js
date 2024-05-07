@@ -1,22 +1,30 @@
 /** @format */
 
 import { createRouter, createWebHistory } from "vue-router";
-import HomeRoute from "./components/HomeRoute.vue";
-import GeneticsProjRoute from "./components/GeneticsProjRoute.vue";
-
+import HomeView from "./components/HomeView.vue";
+import StoreView from "./components/store/StoreView.vue";
+import GalleryView from "./components/store/GalleryView.vue";
+import AboutView from "./components/store/AboutView.vue";
+import StoreNav from "./components/store/StoreNav.vue";
 const routes = [
-    { path: "/", redirect: "/Home" },
+    // { path: "/", redirect: "/" },
 
-    { path: "/Home", component: HomeRoute },
+    { path: "/", component: HomeView },
     {
-        path: "/Genetics",
-        component: GeneticsProjRoute,
+        path: "/store",
+        component: StoreNav,
+        redirect: "/store/home",
+        children: [
+            { path: 'home', component: StoreView },
+            { path: 'gallery', component: GalleryView },
+            { path: 'about', component: AboutView },
+        ],
     },
 ];
 
 const router = createRouter({
     history: createWebHistory(),
-    base: "https://glovedweb.ddns.net/",
+    base: "https://gloved.dev/",
     routes,
     linkActiveClass: "routerActive",
 });

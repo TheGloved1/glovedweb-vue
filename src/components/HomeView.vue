@@ -5,76 +5,74 @@
         <section class="hidden" id="Welcome">
             <h1>Welcome to my website!</h1>
             <p>I'm Kaden Hood</p>
-            <p>This is my online blog/portfolio that shows projects I'm working on</p>
-            <p>or things I'm involved with.</p>
-            <p>Click <button @click="cycleForward">❯</button> to scroll to the Next Section!</p>
+            <p>A young software engineer</p>
+
+            <p>Click <button class="homeButton" @click="cycleForward">❯</button> to scroll to the Next Section!</p>
         </section>
+
         <section class="hidden" id="About">
             <h2>About Me</h2>
             <p></p>
-            <p>I wear gloves all the time. (Don't Ask Why)</p>
-            <p>My name online is Gloves.</p>
-            <p>I play video games.</p>
-            <p>Owner of the <a class="fancy-link" href="#Discord" target="_blank" rel="noopener" style="color: rgba(141, 139, 139, 0.541)">Gloved Discord Server</a>.</p>
-            <p>My favorite thing to do is code.</p>
+            <p>I wear gloves, and go by "Gloves" online.</p>
+            <p>I love to code, and learn new things.</p>
         </section>
-        <section id="Discord" class="hidden">
-            <h2>My Discord Server</h2>
-            <a class="fancy-link" href="https://glovedweb.ddns.net/discord" target="_blank" rel="noopener" style="color: rgba(141, 139, 139, 0.541)">https://glovedweb.ddns.net/discord </a>
-            <iframe id="discord-widget" src="https://discord.com/widget?id=937806100546351174&theme=dark" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"> </iframe>
+
+        <section class="hidden" id="Robotics">
+            <h2><strong><a class="fancy-link" href="https://meporobotics.com/">Mediapolis High School Robotics
+                        Club</a></strong></h2>
+            <p><a class="fancy-link" href="https://frc-events.firstinspires.org/team/9061">FIRST Inspires Robotics Team
+                    9061</a></p>
+            <p>2023 - Present</p>
+            <p></p>
+            <p><strong>Role:</strong> Programmer</p>
+            <p><strong>Language:</strong> Java & Python</p>
         </section>
-        <section id="Funnies">
-            <h2 class="hidden">Here, Have some funnies</h2>
-            <div class="logo hidden image-container">
-                <img src="https://www.boredpanda.com/blog/wp-content/uploads/2023/12/1-85-6579628158bf1__700.jpg?fit=700,700" />
-            </div>
-            <div class="logo hidden image-container">
-                <img src="https://www.rd.com/wp-content/uploads/2023/04/Hilarious-Cat-Memes-2.jpg?fit=700,700" />
-            </div>
-        </section>
+
+        <!-- <div v-html="discordSection"></div> -->
+
         <section class="hidden" id="Credits">
+            <p>This website was built using the <a class="fancy-link" href="https://vuejs.org/">Vue.js</a> web framework
+            </p>
+            <p></p>
             <h2>How I started this</h2>
             <div class="video-container">
-                <iframe src="https://youtube.com/embed/T33NN_pPeNI/" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen> </iframe>
+                <iframe src="https://youtube.com/embed/T33NN_pPeNI/" title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen> </iframe>
             </div>
         </section>
-        <section class="hidden" id="Github">
-            <h2>Here's my github</h2>
-            <div class="main container">
-                <div id="card" class="user-card">
-                    <div class="image-container git-image-container">
-                        <a href="https://github.com/TheGloved1" target="_blank" rel="noopener">
-                            <img id="git-user-img" src="https://avatars.githubusercontent.com/u/96776176?v=4" alt="User image" />
-                        </a>
-                    </div>
-                    <h2>Gloves</h2>
-                    <span>TheGloved1</span>
-                    <p>I wear gloves and write functional code.</p>
-                    <a class="fancy-link" id="github-link" href="https://github.com/TheGloved1" target="_blank" rel="noopener">https://github.com/TheGloved1 </a>
-                </div>
-            </div>
-        </section>
-        <section id="Chatbot">
-            <h2>Just A Simple Little Chatbot</h2>
-            <p>(Snarky, and only works half of the time)</p>
-            <div id="chatbot-container">
-                <div id="chatHistory" class="chat-container" ref="chatContainer">
-                    <div v-for="(message, index) in chatHistory" :key="index" :class="{ message: true, user: message.role === 'user', bot: message.role !== 'user' }">
-                        {{ message.parts }}
-                    </div>
-                </div>
-                <form id="chatForm" @submit.prevent="submitMessage">
-                    <input type="text" id="userMessage" placeholder="Type a message..." v-model="userMessage" />
-                    <button type="submit">Send</button>
-                </form>
-            </div>
-        </section>
+
+        <GitUserComponent :gitUserName="gitUserName" />
+
+        <!-- <section id="Chatbot"> -->
+        <!--     <h2>Just A Simple Little Chatbot</h2> -->
+        <!--     <p>(Snarky, and only works half of the time)</p> -->
+        <!--     <div id="chatbot-container"> -->
+        <!--         <div id="chatHistory" class="chat-container" ref="chatContainer"> -->
+        <!--             <div v-for="(message, index) in chatHistory" :key="index" -->
+        <!--                 :class="{ message: true, user: message.role === 'user', bot: message.role !== 'user' }"> -->
+        <!--                 {{ message.parts }} -->
+        <!--             </div> -->
+        <!--         </div> -->
+        <!--         <form id="chatForm" @submit.prevent="submitMessage"> -->
+        <!--             <input type="text" id="userMessage" placeholder="Type a message..." v-model="userMessage" /> -->
+        <!--             <button type="submit">Send</button> -->
+        <!--         </form> -->
+        <!--     </div> -->
+        <!-- </section> -->
+
         <section class="hidden" id="FileManager">
             <FileManager />
         </section>
 
         <NavComponent />
-        <canvas></canvas>
+
+        <router-link to="/store" class="shopping-cart-button">
+            <p>Checkout Some Art!</p>
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAAAsTAAALEwEAmpwYAAACA0lEQVR4nO3ZTUojURDA8b8NBsUL+BHBG5hTzKh3ULMRFF30RtyKMKsZzzAL3fdCV+JWDX6iFxAUxIVuVPyEUQIvDBRGO9Kpauz6wQOhoaq60l3vJYJzzjnnnHPOOfeeMeAceBXrCTgCqnxz5+/cvFyLFLwBz0CZb2oUOEvRhJiCiUUDEgqmIhpwDUQUSARciSbUm9JwmuK1afcab3cTkg/mwF/jm/8H9FnOgapxA44xngNDxg34nYc5oOlE1PFDK3HywRzQ0hve+UYND0B3kc4Dk6KGjaKdB1ZFDfOaySPjOdABXIj8wyhLDOeAfAIvQ1NUxYZzYF7kXsFAxXAObIjcExiIjOZAF3Avjr/9GEkM5sBPkbN+GDITG8yBPyLnMoYqBnPgWOQcwVCkPAfk8fcR6MFYojgHxkWuTXIgNvz6u0AODAIvBjf/En5/yIUlgwb8ImeqwGH491m7bvo57AJTFmf/NErAHFAD7sLaAWbDNe04qvrDE9Ds0ztI+YttVnFUlT4purH2gU6FOOrmWniPZxTiqKuJ4taAgbDWxLVthTjqbkVx9YIbyuLajUIcdTeiuPIXC88qjrpak0e3XvR6Bq9Aq3HUzbYwvKYV4qgrhf35s6J3U2yDWcQx0Rf252ZF76U8wGQVx0Rn2J+3wkS/DX9Pt/iJZRXHOeecc845/nsD6Zdr5dINCCIAAAAASUVORK5CYII="
+                alt="Store">
+        </router-link>
+        <!-- <canvas></canvas> -->
     </div>
 </template>
 
@@ -82,20 +80,16 @@
 import { GoogleGenerativeAI, HarmCategory, HarmBlockThreshold } from "@google/generative-ai";
 import FileManager from "../components/FileManager.vue";
 import NavComponent from "../components/NavComponent.vue";
+import GitUserComponent from "../components/GitUserComponent.vue";
 import { utils } from "../assets/Utils.js";
+// import { discordHtml } from "html-loader!../assets/discord.html";
 
 export default {
     data() {
         return {
-            // observer: null,
-            // currentSection: null,
-            // sectionObserver: null,
-            // nextSection: null,
-            // prevSection: null,
-            // items: [],
-            // startIndex: 0,
-            // direction: "",
+            gitUserName: "TheGloved1",
             canvas: null,
+            // discordSection: discordHtml,
             ctx: null,
             pointer: {},
             params: {},
@@ -115,7 +109,7 @@ export default {
             chat: null,
             genAI: new GoogleGenerativeAI(process.env.VUE_APP_GOOGLE_API_KEY),
             generationConfig: {
-                temperature: 7.0,
+                temperature: 1.0,
                 topK: 3,
                 topP: 1,
                 maxOutputTokens: 512,
@@ -140,44 +134,38 @@ export default {
             ],
         };
     },
-    computed: {
-        visibleItems() {
-            return this.items.slice(0, 3);
-        },
-    },
-    mounted() {
+    async mounted() {
         document.body.style.overflow = "hidden";
-        this.canvas = document.querySelector("canvas");
-        this.ctx = this.canvas.getContext("2d");
-        this.pointer = {
-            x: 0.5 * window.innerWidth,
-            y: 0.5 * window.innerHeight,
-        };
-        this.params = {
-            pointsNumber: 20,
-            widthFactor: 0.4,
-            mouseThreshold: 0.5,
-            spring: 0.5,
-            friction: 0.5,
-        };
+        // this.canvas = document.querySelector("canvas");
+        // this.ctx = this.canvas.getContext("2d");
+        // this.pointer = {
+        //     x: 0.5 * window.innerWidth,
+        //     y: 0.5 * window.innerHeight,
+        // };
+        // this.params = {
+        //     pointsNumber: 20,
+        //     widthFactor: 0.4,
+        //     mouseThreshold: 0.5,
+        //     spring: 0.5,
+        //     friction: 0.5,
+        // };
+        //
+        // for (let i = 0; i < this.params.pointsNumber; i++) {
+        //     this.trail[i] = {
+        //         x: this.pointer.x,
+        //         y: this.pointer.y,
+        //         dx: 0,
+        //         dy: 0,
+        //     };
+        // }
 
-        for (let i = 0; i < this.params.pointsNumber; i++) {
-            this.trail[i] = {
-                x: this.pointer.x,
-                y: this.pointer.y,
-                dx: 0,
-                dy: 0,
-            };
-        }
+        // window.addEventListener("click", this.updateMousePosition);
+        // window.addEventListener("mousemove", this.updateMousePosition);
+        // window.addEventListener("touchmove", this.updateMousePosition);
 
-        window.addEventListener("click", this.updateMousePosition);
-        window.addEventListener("mousemove", this.updateMousePosition);
-        window.addEventListener("touchmove", this.updateMousePosition);
-
-        this.setupCanvas();
-        this.update(0);
-        window.addEventListener("resize", this.setupCanvas);
-        this.getAllSections();
+        // this.setupCanvas();
+        // this.update(0);
+        // window.addEventListener("resize", this.setupCanvas);
         this.sections = Array.from(document.getElementsByTagName("section"));
         this.observer = new IntersectionObserver(
             (entries) => {
@@ -200,15 +188,13 @@ export default {
             this.observer.observe(element);
         });
 
-        this.addSmoothScroll();
         this.mouseMoved = false;
     },
     beforeUnmount() {
-        window.removeEventListener("click", this.updateMousePosition);
-        window.removeEventListener("mousemove", this.updateMousePosition);
-        window.removeEventListener("touchmove", this.updateMousePosition);
-        window.removeEventListener("resize", this.setupCanvas);
-        window.removeEventListener("scroll", this.onScroll);
+        // window.removeEventListener("click", this.updateMousePosition);
+        // window.removeEventListener("mousemove", this.updateMousePosition);
+        // window.removeEventListener("touchmove", this.updateMousePosition);
+        // window.removeEventListener("resize", this.setupCanvas);
         if (this.observer) {
             this.observer.disconnect();
         }
@@ -265,56 +251,8 @@ export default {
             this.canvas.width = window.innerWidth;
             this.canvas.height = window.innerHeight;
         },
-        getAllSections() {
-            this.items = Array.from(document.querySelectorAll("section:not(.hide)")).map((section) => section.id);
-            this.cycleBackward();
-        },
         navigateToSection(item) {
             document.querySelector(`#${item}`).scrollIntoView({ behavior: "smooth" });
-        },
-        onScroll() {
-            const currentSectionIndex = this.items.findIndex((item) => document.getElementById(item).getBoundingClientRect().top >= 0);
-            while (this.items[1] !== this.items[currentSectionIndex]) {
-                if (currentSectionIndex > 1) {
-                    this.cycleForward();
-                } else {
-                    this.cycleBackward();
-                }
-            }
-        },
-        addSmoothScroll() {
-            document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-                anchor.addEventListener("click", (e) => {
-                    e.preventDefault();
-
-                    const target = document.querySelector(anchor.getAttribute("href"));
-                    target.scrollIntoView({
-                        behavior: "smooth",
-                    });
-                });
-            });
-        },
-        cycleForward() {
-            const firstItem = this.items.shift();
-            this.items.push(firstItem);
-            this.$nextTick(() => {
-                this.direction = "move-right";
-                const element = document.getElementById(this.items[1]);
-                if (element) {
-                    element.scrollIntoView({ behavior: "smooth" });
-                }
-            });
-        },
-        cycleBackward() {
-            const lastItem = this.items.pop();
-            this.items.unshift(lastItem);
-            this.$nextTick(() => {
-                this.direction = "move-left";
-                const element = document.getElementById(this.items[1]);
-                if (element) {
-                    element.scrollIntoView({ behavior: "smooth" });
-                }
-            });
         },
         update(t) {
             this.angle += this.speed;
@@ -354,12 +292,43 @@ export default {
             window.requestAnimationFrame(this.update);
         },
     },
-    name: "HomeRoute",
+    name: "HomeView",
     components: {
         FileManager,
         NavComponent,
+        GitUserComponent,
     },
 };
 </script>
 
-<style lang="sass"></style>
+<style>
+.bottomRight {
+    display: flex;
+    font-size: 25%;
+    bottom: 1rem;
+    right: 1rem;
+}
+
+.shopping-cart-button {
+    position: fixed;
+    background-color: transparent;
+    /* No background color */
+    border: none;
+    /* Remove default button border */
+    padding: 0;
+    /* Adjust padding as desired */
+    cursor: pointer;
+    bottom: 25px;
+    left: 25px;
+    font-size: 1.25vh;
+    filter: invert(50%);
+}
+
+@media screen and (max-width: 800px) {
+    .shopping-cart-button {
+        top: 10vh;
+        left: 2vh;
+        bottom: auto;
+    }
+}
+</style>

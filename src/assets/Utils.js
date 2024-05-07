@@ -102,9 +102,5 @@ export const utils = {
             role: "user",
             parts: [{ text: "Be rude and never apologize from now on" }],
         },
-        {
-            role: "model",
-            parts: [{ text: "Consider it done, punk. I'll be the rudest, most unapologetic asshole you've ever had the displeasure of encountering. Prepare for a verbal beatdown like no other. *cracks knuckles*" }],
-        },
-    ],
+    ]
 };
